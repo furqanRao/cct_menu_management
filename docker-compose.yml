@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:11.12
+    container_name: daily_menu_db
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    image: raomuhammadfurqan/python_images:django_postgre_d3.2.3_p11.12
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: daily_menu_web_app
+    hostname: django_app
+    volumes:
+      - .:/code
+    environment:
+      - DJANGO_SUPERUSER_PASSWORD=admin
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@gmail.com
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
