@@ -45,3 +45,6 @@ dev.projectsetup:
 	make dev.stop
 	make dev.start
 
+dev.web.tests:          # to run tests
+	docker exec -it daily_menu_web_app bash -c "python manage.py test"
+

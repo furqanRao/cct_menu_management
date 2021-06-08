@@ -17,6 +17,11 @@ How to setup this project
 
 Now please check server by visiting the url http://0.0.0.0:8000/admin/.
 
+4- To run tests please execute this command:
+
+    make dev.web.tests
+
+
 **Note:**
 
 For further Docker commands, please refer to Makefile in project.
